@@ -41,5 +41,6 @@ if dein#tap('fzf.vim')
   endfunction
 
   nnoremap <leader>ff :FzfFiles<CR>
+  nnoremap <leader>fb :FzfBuffers<CR>
   nnoremap <leader>fa :FzfRg<CR>
 endif

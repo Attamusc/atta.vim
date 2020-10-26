@@ -1,3 +1,9 @@
+# Aniseed, to have the dotfiles in Fennel
+# ---------------------------------------
+[[plugins]]
+repo = 'Olical/aniseed'
+rev = 'v3.9.0'
+
 # Plugin Manager
 # --------------
 [[plugins]]
@@ -23,6 +29,12 @@ repo = 'preservim/nerdcommenter'
 [[plugins]]
 repo = 'machakann/vim-sandwich'
 
+[[plugins]]
+repo = 'tpope/vim-fugitive'
+
+[[plugins]]
+repo = 'jiangmiao/auto-pairs'
+
 # File Drawer
 # -----------
 [[plugins]]
@@ -39,7 +51,11 @@ repo = 'mhinz/vim-signify'
 # Status Line
 # -----------
 [[plugins]]
-repo = 'vim-airline/vim-airline'
+repo = 'itchyny/lightline.vim'
+
+[[plugins]]
+repo = 'mengelbrecht/lightline-bufferline'
+depends = 'lightline.vim'
 
 # Fuzzy Finder
 # ------------
@@ -126,6 +142,9 @@ repo = 'vim-ruby/vim-ruby'
 [[plugins]]
 repo = 'maxmellon/vim-jsx-pretty'
 merged = 0
+
+[[plugins]]
+repo = 'bakpakin/fennel.vim'
 
 # Colors
 # ------

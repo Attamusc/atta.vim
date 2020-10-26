@@ -1,6 +1,7 @@
 {
   "eslint.run": "onSave",
   "eslint.autoFixOnSave": false,
+  "eslint.quiet": false,
   "eslint.filetypes": [
     "javascript",
     "javascriptreact",
@@ -8,6 +9,8 @@
     "typescriptreact"
   ],
   "prettier.disableSuccessMessage": true,
+  "prettier.requireConfig": true,
+  "tsserver.enableJavascript": false,
   "coc.preferences.formatOnSaveFiletypes": [
     "javascript",
     "javascriptreact",
