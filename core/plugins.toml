@@ -53,9 +53,14 @@ repo = 'mhinz/vim-signify'
 [[plugins]]
 repo = 'itchyny/lightline.vim'
 
+# Buffer Line
+# -----------
 [[plugins]]
-repo = 'mengelbrecht/lightline-bufferline'
-depends = 'lightline.vim'
+repo = 'kyazdani42/nvim-web-devicons'
+
+[[plugins]]
+repo = 'romgrk/barbar.nvim'
+depends = 'nvim-web-devicons'
 
 # Fuzzy Finder
 # ------------
@@ -72,6 +77,10 @@ depends = 'fzf'
 repo = 'antoinemadec/coc-fzf'
 depends = ['fzf', 'coc.nvim']
 rev = 'release'
+
+[[plugins]]
+repo = 'stsewd/fzf-checkout.vim'
+depends = ['fzf', 'vim-fugitive']
 
 # Completions
 # -----------
@@ -122,6 +131,12 @@ depends = 'coc.nvim'
 merged = 0
 build = 'yarn install --frozen-lockfile'
 
+[[plugins]]
+repo = 'josa42/coc-lua'
+depends = 'coc.nvim'
+merged = 0
+build = 'yarn install --frozen-lockfile'
+
 # Languages
 # ---------
 [[plugins]]
@@ -145,6 +160,9 @@ merged = 0
 
 [[plugins]]
 repo = 'bakpakin/fennel.vim'
+
+[[plugins]]
+repo = 'euclidianAce/BetterLua.vim'
 
 # Colors
 # ------

@@ -21,4 +21,3 @@ syntax enable
 lua require('aniseed.env').init()
 
 call plugins#source_plugin_configs()
-

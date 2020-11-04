@@ -32,10 +32,7 @@ function! s:init_dein() abort
   let l:plugin_toml = expand($VIM_PATH . '/core/plugins.toml')
 
   call dein#begin(l:plugin_dir, [l:plugin_toml])
-
   call dein#load_toml(l:plugin_toml, { 'lazy': 0 })
-
-
   call dein#end()
   call dein#save_state()
 

@@ -1,5 +1,6 @@
 (module dotfiles.module.general
-  {require {nvim aniseed.nvim}})
+  {require {nvim aniseed.nvim}
+   require-macros [dotfiles.macros]})
 
 (defn- nnoremap [from to]
   (nvim.set_keymap :n from to {:noremap true}))
@@ -57,6 +58,9 @@
 
 ; Show numbers
 (set nvim.o.nu true)
+
+; Show relative line numbers
+(set nvim.o.rnu true)
 
 ; Visual bell when alerting instead of an audio bell
 (set nvim.o.visualbell true)
@@ -117,6 +121,8 @@
 ; Highlight the background of the line the cursor is on
 (set nvim.o.cursorline true)
 
+(set nvim.o.completeopt "menuone,noinsert,noselect")
+
 ; Don't remember what these do but leaving them for now...
 (set nvim.o.hidden true)
 (set nvim.o.smartindent true)
@@ -132,6 +138,18 @@
 (set nvim.o.clipboard :unnamed)
 (set nvim.o.lazyredraw true)
 (set nvim.o.autowrite true)
+
+; Relative line numbers are nice to move around, but not so helpful in
+; insert mode. This autocmd switches between them
+; augroup numbertoggle
+  ; autocmd!
+  ; autocmd BufEnter,FocusGained,InsertLeave,WinEnter * if &nu | set rnu   | endif
+  ; autocmd BufLeave,FocusLost,InsertEnter,WinLeave   * if &nu | set nornu | endif
+; augroup END
+(augroup :NumberToggle
+  (do
+    (autocmd "BufEnter,FocusGained,InsertLeave,WinEnter" :* "if &nu | set rnu | endif")
+    (autocmd "BufLeave,FocusLost,InsertEnter,WinLeave" :* "if &nu | set nornu | endif")))
 
 ; Set colorscheme
 (set nvim.o.background :dark)

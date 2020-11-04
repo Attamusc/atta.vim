@@ -20,6 +20,6 @@
   (nvim.set_keymap mode from to {:noremap true}))
 
 (defn map [mode from to]
-  "Sets a mapping for all modes"
+  "Sets a mapping for a given mode"
   (nvim.set_keymap mode from to {}))
 

@@ -1,6 +1,8 @@
 (module dotfiles.module.general
   {require {nvim aniseed.nvim
-            util dotfiles.util}})
+            nu aniseed.nvim.util
+            util dotfiles.util}
+   require-macros [dotfiles.macros]})
 
 ; Keybindings not related to a specific plugin or language
 ; Enforce good habits
@@ -31,11 +33,24 @@
 
 ; Quick command mode
 ; nnoremap <CR> :
-(util.noremap :n :<cr> ":")
+; (nu.fn-bridge
+  ; :CommandOrClearSearch
+  ; :dotfiles.module.general :on-cr)
+
+; (defn on-cr []
+  ; (if (= 0 nvim.v.hlsearch)
+    ; (nvim.command ":")
+    ; (nvim.command ":nohl\<cr>")))
+
+; (nvim.set_keymap :n :<cr> ":call CommandOrClearSearch()<cr>" {:expr true})
+; this is super annoying (attempt above) to get in fnl so forget it
+; Clears hlsearch after doing a search, otherwise got into command mode
+(nvim.command "nnoremap <expr> <CR> {-> v:hlsearch ? \":nohl\\<CR>\" : \":\"}()")
 
 ; In the quickfix window, <CR> is used to jump to the error under the
 ; cursor, so undefine the mapping there.
 ; autocmd BufReadPost quickfix nnoremap <buffer> <CR> <CR>
+(autocmd :BufReadPost :quickfix "nnoremap <buffer> <CR> <CR>")
 
 ; Make core movements visual line based vs actual line based
 ; map j gj
