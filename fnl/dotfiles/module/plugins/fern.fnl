@@ -1,7 +1,12 @@
 (module dotfiles.module.plugins.fern
-  {require {nvim aniseed.nvim
+  {require {core aniseed.core
+            nvim aniseed.nvim
             util dotfiles.util}
    require-macros [dotfiles.macros]})
+
+(defn- map-buffer [from to opt]
+  (let [options (core.merge opt {:buffer true})]
+    (nvim.set-keymap :n from to options)))
 
 (defn- fern-variables []
   (set nvim.g.fern#renderer "nerdfont")
@@ -11,20 +16,18 @@
   (set nvim.g.fern#renderer#default#collapsed_symbol "▶ ")
   (set nvim.g.fern#renderer#default#expanded_symbol "▼ "))
 
+(defn- fern-mapping []
+  (nvim.set_keymap "" :<leader>e ":Fern . -drawer -reveal=% -toggle -width=35<cr><c-w>=" {:silent true}))
+
+(defn fern-init []
+  (set nvim.wo.rnu false)
+  (set nvim.wo.nu false))
+
 (when (nvim.fn.dein#tap "fern.vim")
-  (fern-variables))
+  (fern-variables)
+  (fern-mapping))
 
 ; if dein#tap("fern.vim")
-  ; " Custom settings and mappings.
-  ; let g:fern#renderer = "nerdfont"
-  ; let g:fern#disable_default_mappings = 1
-  ; let g:fern#renderer#default#leading = "  "
-  ; let g:fern#renderer#default#leaf_symbol = "- "
-  ; let g:fern#renderer#default#collapsed_symbol = "▶ "
-  ; let g:fern#renderer#default#expanded_symbol = "▼ "
-
-  ; noremap <silent> <Leader>e :Fern . -drawer -reveal=% -toggle -width=35<CR><C-w>=
-
   ; function! s:hijack_directory() abort
     ; let path = expand('%:p')
     ; if !isdirectory(path)

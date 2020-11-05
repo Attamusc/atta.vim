@@ -4,6 +4,10 @@
 repo = 'Olical/aniseed'
 rev = 'v3.9.0'
 
+[[plugins]]
+repo = 'Olical/conjure'
+rev = 'v4.8.0'
+
 # Plugin Manager
 # --------------
 [[plugins]]
@@ -30,10 +34,21 @@ repo = 'preservim/nerdcommenter'
 repo = 'machakann/vim-sandwich'
 
 [[plugins]]
-repo = 'tpope/vim-fugitive'
+repo = 'jiangmiao/auto-pairs'
 
 [[plugins]]
-repo = 'jiangmiao/auto-pairs'
+repo = 'tpope/vim-repeat.git'
+
+[[plugins]]
+repo = 'guns/vim-sexp'
+
+[[plugins]]
+repo = 'tpope/vim-sexp-mappings-for-regular-people'
+
+# VCS
+# ---
+[[plugins]]
+repo = 'tpope/vim-fugitive'
 
 # File Drawer
 # -----------
@@ -133,6 +148,12 @@ build = 'yarn install --frozen-lockfile'
 
 [[plugins]]
 repo = 'josa42/coc-lua'
+depends = 'coc.nvim'
+merged = 0
+build = 'yarn install --frozen-lockfile'
+
+[[plugins]]
+repo = 'jlesquembre/coc-conjure'
 depends = 'coc.nvim'
 merged = 0
 build = 'yarn install --frozen-lockfile'
