@@ -14,7 +14,7 @@
 
 (when (nvim.fn.dein#tap "lightline.vim")
   (set nvim.o.showmode false)
-  (set nvim.o.showtabline 2)
+  (set nvim.o.showtabline 1)
   (set nvim.g.lightline
        {:colorscheme :dracula_pro
         :active {:left [[:mode :paste]

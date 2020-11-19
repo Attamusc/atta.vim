@@ -81,7 +81,7 @@
 
 ; Show sign glyphs in the same column as numbers to reduce the pop when signs
 ; are added
-(set nvim.o.signcolumn :number)
+(set nvim.o.signcolumn :yes)
 
 ; Start scrolling up/down when we're 5 lines away for the edges of the buffer
 (set nvim.o.scrolloff 5)

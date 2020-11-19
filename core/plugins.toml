@@ -68,15 +68,6 @@ repo = 'mhinz/vim-signify'
 [[plugins]]
 repo = 'itchyny/lightline.vim'
 
-# Buffer Line
-# -----------
-[[plugins]]
-repo = 'kyazdani42/nvim-web-devicons'
-
-[[plugins]]
-repo = 'romgrk/barbar.nvim'
-depends = 'nvim-web-devicons'
-
 # Fuzzy Finder
 # ------------
 [[plugins]]
