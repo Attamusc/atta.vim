@@ -36,5 +36,4 @@
   (nvim.set_keymap :n "[g" "<plug>(coc-diagnostic-prev)" {:silent true})
   (nvim.set_keymap :n "]g" "<plug>(coc-diagnostic-next)" {:silent true}))
 
-(when (nvim.fn.dein#tap "coc.nvim")
-  (coc-keymap))
+(coc-keymap)

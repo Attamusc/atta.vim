@@ -51,7 +51,6 @@
       (nvim.ex.bwipeout "%")
       (nvim.command (nvim.fn.printf "Fern %s" (nvim.fn.fnameescape path))))))
 
-(when (nvim.fn.dein#tap "fern.vim")
-  (fern-variables)
-  (fern-mapping)
-  (fern-augroups))
+(fern-variables)
+(fern-mapping)
+(fern-augroups)

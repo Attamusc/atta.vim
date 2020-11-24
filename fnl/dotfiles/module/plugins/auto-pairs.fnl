@@ -7,8 +7,7 @@
     (tset auto-pairs "`" nil)
     (set nvim.b.AutoPairs auto-pairs)))
 
-(when (nvim.fn.dein#tap "auto-pairs")
-  (nvim.ex.autocmd
-    :FileType
-    "clojure,fennel,scheme"
-    "lua require('dotfiles.module.plugins.auto-pairs').init()"))
+(nvim.ex.autocmd
+  :FileType
+  "clojure,fennel,scheme"
+  "lua require('dotfiles.module.plugins.auto-pairs').init()")

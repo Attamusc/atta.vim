@@ -19,6 +19,5 @@
   (util.noremap :n "<leader>fb" ":FzfBuffers<cr>")
   (util.noremap :n "<leader>fa" ":FzfRg<cr>"))
 
-(when (nvim.fn.dein#tap "fzf.vim")
-  (fzf-variables)
-  (fzf-mappings))
+(fzf-variables)
+(fzf-mappings)
