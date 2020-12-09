@@ -7,7 +7,7 @@ if filereadable(glob('~/.local/share/nvim/site/autoload/plug.vim')) == 0
   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 
-" Use spacebar as leader and ; as secondary-leader
+" Use spacebar as leader and , as secondary-leader
 " Required before loading plugins!
 let g:mapleader="\<Space>"
 let g:maplocalleader=','
@@ -32,6 +32,11 @@ Plug 'tpope/vim-repeat'
 Plug 'guns/vim-sexp'
 Plug 'tpope/vim-sexp-mappings-for-regular-people'
 
+" Lua nvim utils
+" --------------
+Plug 'nvim-lua/popup.nvim'
+Plug 'nvim-lua/plenary.nvim'
+
 " VCS
 " ---
 Plug 'tpope/vim-fugitive'
@@ -49,12 +54,17 @@ Plug 'mhinz/vim-signify'
 " -----------
 Plug 'itchyny/lightline.vim'
 
-" Fuzzy Finder
+" Fuzzy Finder(s)
 " ------------
 Plug 'junegunn/fzf', {'do': './install --all'}
 Plug 'junegunn/fzf.vim'
 Plug 'antoinemadec/coc-fzf', {'tag': 'release'}
 Plug 'stsewd/fzf-checkout.vim'
+
+" lua based fuzzy finder. Switch to this only
+" once all the fzf-based helpers are replicated
+" and it doesn't have issues with remapping certain keys
+Plug 'nvim-telescope/telescope.nvim'
 
 " Completions
 " -----------

@@ -6,10 +6,10 @@
   (set nvim.env.FZF_DEFAULT_OPTS "--layout=reverse")
   (set nvim.g.fzf_command_prefix "Fzf")
   (set nvim.g.fzf_layout {:window {:width 0.8
-                                   :height 0.6
+                                   :height 0.8
                                    :yoffset 0.2
                                    :highlight :Normal}})
-  (set nvim.g.fzf_preview_window "down:50%")
+  (set nvim.g.fzf_preview_window "right:50%")
   (set nvim.g.fzf_action {:ctrl-t "tab split"
                           :ctrl-h "split"
                           :ctrl-v "vsplit"}))

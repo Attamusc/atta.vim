@@ -23,7 +23,7 @@
 
 (defn fern-init []
   ; Bailing out of lua for this since for some reason I can't get the nvim.wo.* version of these
-  ; to actually work probably for only the buffer, and these don't exists as nvim.bo.* versions.
+  ; to actually work properly for only the buffer, and these don't exists as nvim.bo.* versions.
   (nvim.command "setlocal nornu")
   (nvim.command "setlocal nonu")
   (map-buffer "<Plug>(fern-my-open-expand-collapse)"
