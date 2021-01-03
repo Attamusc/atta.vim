@@ -17,7 +17,7 @@ syntax enable
 
 call plug#begin(stdpath('data') . '/plugged')
 
-Plug 'Olical/aniseed', {'tag': 'v3.9.0'}
+Plug 'Olical/aniseed'
 Plug 'Olical/conjure', {'tag': 'v4.8.0'}
 
 " General/Utils
