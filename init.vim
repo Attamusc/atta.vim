@@ -31,6 +31,7 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'tpope/vim-repeat'
 Plug 'guns/vim-sexp'
 Plug 'tpope/vim-sexp-mappings-for-regular-people'
+Plug 'kyazdani42/nvim-web-devicons'
 
 " Lua nvim utils
 " --------------

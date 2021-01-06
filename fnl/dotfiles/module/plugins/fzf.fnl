@@ -20,4 +20,4 @@
   (util.noremap :n "<leader>fa" ":FzfRg<cr>"))
 
 (fzf-variables)
-(fzf-mappings)
+; (fzf-mappings)
