@@ -58,7 +58,7 @@
 (util.map "" :j :gj)
 (util.map "" :k :gk)
 
-; Easier up/down movement in insert mode movement in insert mode
+; Easier up/down movement in insert mode
 (util.map :i :<c-k> :<up>)
 (util.map :i :<c-j> :<down>)
 

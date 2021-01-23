@@ -32,6 +32,7 @@ Plug 'tpope/vim-repeat'
 Plug 'guns/vim-sexp'
 Plug 'tpope/vim-sexp-mappings-for-regular-people'
 Plug 'kyazdani42/nvim-web-devicons'
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 
 " Lua nvim utils
 " --------------
@@ -79,6 +80,7 @@ Plug 'neoclide/coc-solargraph', {'do': 'yarn install --frozen-lockfile'}
 Plug 'fannheyward/coc-rust-analyzer', {'do': 'yarn install --frozen-lockfile'}
 Plug 'josa42/coc-lua', {'do': 'yarn install --frozen-lockfile'}
 Plug 'jlesquembre/coc-conjure', {'do': 'yarn install --frozen-lockfile'}
+Plug 'felippepuhle/coc-graphql', {'do': 'yarn install --frozen-lockfile'}
 
 " Languages
 " ---------
@@ -90,10 +92,13 @@ Plug 'vim-ruby/vim-ruby'
 Plug 'maxmellon/vim-jsx-pretty'
 Plug 'bakpakin/fennel.vim'
 Plug 'euclidianAce/BetterLua.vim'
+Plug 'mustache/vim-mustache-handlebars'
+Plug 'jparise/vim-graphql'
 
 " Colors
 " ------
 Plug '~/OneDrive/Tools/DraculaPro/themes', {'as': 'dracula_pro', 'rtp': 'vim'}
+Plug 'glepnir/zephyr-nvim', {'branch': 'main'}
 
 call plug#end()
 
