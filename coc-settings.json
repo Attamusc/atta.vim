@@ -8,6 +8,7 @@
     "typescript",
     "typescriptreact"
   ],
+  "prettier.disableLanguages": [],
   "prettier.disableSuccessMessage": true,
   "prettier.requireConfig": true,
   "tsserver.enableJavascript": false,
@@ -17,7 +18,8 @@
     "typescript",
     "typescriptreact",
     "rust",
-    "json"
+    "json",
+    "vue"
   ],
   "coc.preferences.formatOnType": false
 }

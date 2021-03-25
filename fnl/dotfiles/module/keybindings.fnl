@@ -108,6 +108,8 @@
 ; Quick(ish) saving
 ; nnoremap <leader>s :w<CR>
 (util.noremap :n "<leader>s" ":w<cr>")
+; nnoremap <leader>S :wall<CR>
+(util.noremap :n "<leader>S" ":wall<cr>")
 
 ; **VERY MAGIC EVERYWHERE**
 ; nnoremap / /\v

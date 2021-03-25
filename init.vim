@@ -58,15 +58,8 @@ Plug 'itchyny/lightline.vim'
 
 " Fuzzy Finder(s)
 " ------------
-Plug 'junegunn/fzf', {'do': './install --all'}
-Plug 'junegunn/fzf.vim'
-Plug 'antoinemadec/coc-fzf', {'tag': 'release'}
-Plug 'stsewd/fzf-checkout.vim'
-
-" lua based fuzzy finder. Switch to this only
-" once all the fzf-based helpers are replicated
-" and it doesn't have issues with remapping certain keys
 Plug 'nvim-telescope/telescope.nvim'
+Plug 'nvim-telescope/telescope-fzy-native.nvim'
 
 " Completions
 " -----------
@@ -81,6 +74,7 @@ Plug 'fannheyward/coc-rust-analyzer', {'do': 'yarn install --frozen-lockfile'}
 Plug 'josa42/coc-lua', {'do': 'yarn install --frozen-lockfile'}
 Plug 'jlesquembre/coc-conjure', {'do': 'yarn install --frozen-lockfile'}
 Plug 'felippepuhle/coc-graphql', {'do': 'yarn install --frozen-lockfile'}
+Plug 'josa42/coc-go', {'do': 'yarn install --frozen-lockfile'}
 
 " Languages
 " ---------
@@ -94,6 +88,7 @@ Plug 'bakpakin/fennel.vim'
 Plug 'euclidianAce/BetterLua.vim'
 Plug 'mustache/vim-mustache-handlebars'
 Plug 'jparise/vim-graphql'
+Plug 'martinda/Jenkinsfile-vim-syntax'
 
 " Colors
 " ------
