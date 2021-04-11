@@ -91,6 +91,7 @@ Plug 'euclidianAce/BetterLua.vim'
 Plug 'mustache/vim-mustache-handlebars'
 Plug 'jparise/vim-graphql'
 Plug 'martinda/Jenkinsfile-vim-syntax'
+Plug 'habamax/vim-godot'
 
 " Colors
 " ------
