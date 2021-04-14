@@ -15,7 +15,7 @@
 (set nvim.o.showmode false)
 (set nvim.o.showtabline 1)
 (set nvim.g.lightline
-      {:colorscheme :dracula_pro
+      {:colorscheme :ayu_mirage
       :active {:left [[:mode :paste]
                       [:gitbranch :readonly :filename :modified]]}
       :inactive {:left [[:filename]]
