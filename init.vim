@@ -76,6 +76,7 @@ Plug 'jlesquembre/coc-conjure', {'do': 'yarn install --frozen-lockfile'}
 Plug 'felippepuhle/coc-graphql', {'do': 'yarn install --frozen-lockfile'}
 Plug 'josa42/coc-go', {'do': 'yarn install --frozen-lockfile'}
 Plug 'iamcco/coc-tailwindcss',  {'do': 'yarn install --frozen-lockfile && yarn run build'}
+Plug 'marlonfan/coc-phpls', {'do': 'yarn install --frozen-lockfile'}
 
 " Languages
 " ---------
