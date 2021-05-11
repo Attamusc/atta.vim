@@ -97,6 +97,7 @@ Plug 'habamax/vim-godot'
 " ------
 Plug '~/OneDrive/Tools/DraculaPro/themes', {'as': 'dracula_pro', 'rtp': 'vim'}
 Plug 'glepnir/zephyr-nvim', {'branch': 'main'}
+Plug 'shaunsingh/moonlight.nvim'
 
 call plug#end()
 
