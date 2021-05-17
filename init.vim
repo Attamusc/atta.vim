@@ -54,7 +54,8 @@ Plug 'mhinz/vim-signify'
 
 " Status Line
 " -----------
-Plug 'itchyny/lightline.vim'
+" Plug 'itchyny/lightline.vim'
+Plug 'hoob3rt/lualine.nvim'
 
 " Fuzzy Finder(s)
 " ---------------
