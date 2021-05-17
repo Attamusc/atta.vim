@@ -57,9 +57,14 @@ Plug 'mhinz/vim-signify'
 Plug 'itchyny/lightline.vim'
 
 " Fuzzy Finder(s)
-" ------------
+" ---------------
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'nvim-telescope/telescope-fzy-native.nvim'
+
+" Diagnostics
+" -----------
+Plug 'folke/trouble.nvim'
+Plug 'folke/todo-comments.nvim'
 
 " Completions
 " -----------
@@ -97,7 +102,8 @@ Plug 'habamax/vim-godot'
 " ------
 Plug '~/OneDrive/Tools/DraculaPro/themes', {'as': 'dracula_pro', 'rtp': 'vim'}
 Plug 'glepnir/zephyr-nvim', {'branch': 'main'}
-Plug 'shaunsingh/moonlight.nvim'
+Plug 'tiagovla/tokyodark.nvim'
+Plug 'folke/tokyonight.nvim'
 
 call plug#end()
 

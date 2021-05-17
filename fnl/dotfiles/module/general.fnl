@@ -154,5 +154,3 @@
 ; Set colorscheme
 (set nvim.o.background :dark)
 ; (nvim.ex.colorscheme "dracula_pro_van_helsing")
-; (nvim.ex.colorscheme "zephyr")
-(nvim.ex.colorscheme "material")
