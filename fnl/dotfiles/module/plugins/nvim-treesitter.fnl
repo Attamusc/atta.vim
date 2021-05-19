@@ -5,6 +5,7 @@
 
 (defn- setup-treesitter []
   (ts-configs.setup {:ensure_installed :all
-                     :highlight {:enable true}}))
+                     :highlight {:enable true}
+                     :indent {:enable true}}))
 
 (setup-treesitter)

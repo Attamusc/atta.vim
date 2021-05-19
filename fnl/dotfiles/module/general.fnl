@@ -100,6 +100,10 @@
 ; Maximum fold levels
 (set nvim.o.foldlevel 20)
 
+; Use tree-sitter for folding
+(set nvim.o.foldmethod :expr)
+(nvim.command "set foldexpr=nvim_treesitter#foldexpr()")
+
 ; Use the same symbols as TextMate for tabstops and EOLs
 (set nvim.o.listchars "tab:▸\\ ,eol:¬,trail:·")
 

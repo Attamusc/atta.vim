@@ -98,6 +98,8 @@ Plug 'mustache/vim-mustache-handlebars'
 Plug 'jparise/vim-graphql'
 Plug 'martinda/Jenkinsfile-vim-syntax'
 Plug 'habamax/vim-godot'
+Plug 'StanAngeloff/php.vim'
+Plug '2072/PHP-Indenting-for-VIm'
 
 " Colors
 " ------
