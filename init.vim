@@ -64,8 +64,8 @@ Plug 'nvim-telescope/telescope-fzy-native.nvim'
 
 " Diagnostics
 " -----------
-Plug 'folke/trouble.nvim'
-Plug 'folke/todo-comments.nvim'
+Plug 'folke/trouble.nvim', {'branch': 'main'}
+Plug 'folke/todo-comments.nvim', {'branch': 'main'}
 
 " Completions
 " -----------
@@ -106,7 +106,7 @@ Plug '2072/PHP-Indenting-for-VIm'
 Plug '~/OneDrive/Tools/DraculaPro/themes', {'as': 'dracula_pro', 'rtp': 'vim'}
 Plug 'glepnir/zephyr-nvim', {'branch': 'main'}
 Plug 'tiagovla/tokyodark.nvim'
-Plug 'folke/tokyonight.nvim'
+Plug 'folke/tokyonight.nvim', {'branch': 'main'}
 
 call plug#end()
 
