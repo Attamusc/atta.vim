@@ -155,11 +155,21 @@ local function number_toggle_autocmd()
   ]])
 end
 
+local function highlight_yank_autocmd()
+  cmd([[
+    augroup highlight_yank
+        autocmd!
+        autocmd TextYankPost * silent! lua require'vim.highlight'.on_yank({timeout = 40})
+    augroup END
+  ]])
+end
+
 function M.setup()
   disable_default_plugins()
   mapleader()
   general_settings()
   number_toggle_autocmd()
+  highlight_yank_autocmd()
 end
 
 return M
