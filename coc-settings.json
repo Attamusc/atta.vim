@@ -19,7 +19,8 @@
     "typescriptreact",
     "rust",
     "json",
-    "vue"
+    "vue",
+    "lua"
   ],
   "coc.preferences.formatOnType": false
 }
