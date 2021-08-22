@@ -22,5 +22,7 @@
     "vue",
     "lua"
   ],
-  "coc.preferences.formatOnType": false
+  "coc.preferences.formatOnType": false,
+  "coc.source.OmniSharp.enable" : true,
+  "coc.source.OmniSharp.triggerCharacters": "."
 }

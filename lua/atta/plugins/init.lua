@@ -22,7 +22,7 @@ local function install_packages()
     -- Manage packer with packer
     use 'wbthomason/packer.nvim'
 
-   -- General/Utils
+    -- General/Utils
     use { 'antoinemadec/FixCursorHold.nvim' }
     use { 'lambdalisue/nerdfont.vim' }
     use { 'lambdalisue/glyph-palette.vim' }
@@ -35,31 +35,34 @@ local function install_packages()
     use { 'kyazdani42/nvim-web-devicons' }
     use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
 
-   -- Lua nvim utils
+    -- Lua nvim utils
     use { 'nvim-lua/popup.nvim' }
     use { 'nvim-lua/plenary.nvim' }
-   -- VCS
+    -- VCS
     use { 'tpope/vim-fugitive' }
-   -- File Drawer
+    -- File Drawer
     use { 'lambdalisue/fern.vim' }
     use { 'lambdalisue/fern-renderer-nerdfont.vim' }
     use { 'lambdalisue/fern-hijack.vim' }
 
-   -- VCS Sign Info
+    -- VCS Sign Info
     use { 'mhinz/vim-signify' }
 
-   -- Status Line
+    -- Status Line
     use { 'hoob3rt/lualine.nvim' }
 
-   -- Fuzzy Finder(s)
+    -- Fuzzy Finder(s)
     use { 'nvim-telescope/telescope.nvim' }
     use { 'nvim-telescope/telescope-fzy-native.nvim' }
 
-   -- Diagnostics
+    -- Diagnostics
     use { 'folke/trouble.nvim', branch = 'main' }
     use { 'folke/todo-comments.nvim', branch = 'main' }
 
-   -- Completions
+    -- Indent lines
+    use "lukas-reineke/indent-blankline.nvim"
+
+    -- Completions
     use { 'neoclide/coc.nvim', tag = 'release' }
     use { 'neoclide/coc-tsserver', run = 'yarn install --frozen-lockfile' }
     use { 'neoclide/coc-eslint', run = 'yarn install --frozen-lockfile' }
@@ -74,8 +77,9 @@ local function install_packages()
     use { 'josa42/coc-go', run = 'yarn install --frozen-lockfile' }
     use { 'iamcco/coc-tailwindcss',  run = 'yarn install --frozen-lockfile && yarn run build' }
     use { 'marlonfan/coc-phpls', run = 'yarn install --frozen-lockfile' }
+    use { 'OmniSharp/omnisharp-vim' }
 
-   -- Languages
+    -- Languages
     use { 'cespare/vim-toml' }
     use { 'pangloss/vim-javascript' }
     use { 'HerringtonDarkholme/yats.vim' }
@@ -91,7 +95,7 @@ local function install_packages()
     use { 'StanAngeloff/php.vim' }
     use { '2072/PHP-Indenting-for-VIm' }
 
-   -- Colors
+    -- Colors
     use { '~/OneDrive/Tools/DraculaPro/themes', as = "dracula_pro", rtp = "vim" }
     use { 'glepnir/zephyr-nvim', branch = 'main' }
     use { 'tiagovla/tokyodark.nvim' }
@@ -103,6 +107,7 @@ local function load_plugin_configs()
   require("atta.plugins.coc").setup()
   require("atta.plugins.fern").setup()
   require("atta.plugins.glyph_palette").setup()
+  require("atta.plugins.indent-blankline").setup()
   require("atta.plugins.lualine").setup()
   require("atta.plugins.nerdcommenter").setup()
   require("atta.plugins.nvim-treesitter").setup()
