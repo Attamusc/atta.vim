@@ -121,7 +121,7 @@ local function general_settings()
   -- Highlight the background of the line the cursor is on
   opt.cursorline = true
 
-  opt.completeopt = "menuone,noinsert,noselect"
+  opt.completeopt = "menuone,noselect"
 
   -- Dark background for colorschemes that provide both
   opt.background = "dark"
