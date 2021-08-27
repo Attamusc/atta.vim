@@ -8,29 +8,29 @@ local function keymaps()
   -- General Keybindings
   -- Keybindings not related to a specific plugin or language
   -- Enforce good habits
-  map("","<left>","<nop>")
-  map("","<right>","<nop>")
-  map("","<up>","<nop>")
-  map("","<down>","<nop>")
+  map("", "<left>", "<nop>")
+  map("", "<right>", "<nop>")
+  map("", "<up>", "<nop>")
+  map("", "<down>", "<nop>")
 
   -- jj | escaping
-  noremap("i","jj","<esc>")
-  noremap("c","jj","<c-c>")
+  noremap("i", "jj", "<esc>")
+  noremap("c", "jj", "<c-c>")
 
   -- Quit visual mode
-  noremap("v","v","<esc>")
+  noremap("v", "v", "<esc>")
 
   -- Move to the start of line
-  noremap("n","H","^")
+  noremap("n", "H", "^")
 
   -- Move to the end of line
-  noremap("n","L","$")
+  noremap("n", "L", "$")
 
   -- Make Y behave like the other lowercase/uppercase opertaors
   noremap("n", "Y", "y$")
 
   -- Redo
-  noremap("n","U","<c-r>")
+  noremap("n", "U", "<c-r>")
 
   -- Moving text up and down lines
   noremap("v", "J", ":m '>+1<CR>gv=gv")
@@ -53,20 +53,20 @@ local function keymaps()
   cmd([[autocmd BufReadPost quickfix nnoremap <buffer> <CR> <CR>]])
 
   -- Make core movements visual line based vs actual line based
-  map("","j","gj")
-  map("","k","gk")
+  map("", "j", "gj")
+  map("", "k", "gk")
 
   -- Easier up/down movement in insert mode
-  map("i","<c-k>","<up>")
-  map("i","<c-j>","<down>")
+  map("i", "<c-k>", "<up>")
+  map("i", "<c-j>", "<down>")
 
   -- Use tab and shift tab for indentation
-  noremap("n","<s-tab>", "<<")
-  noremap("n","<tab>", ">>")
+  noremap("n", "<s-tab>", "<<")
+  noremap("n", "<tab>", ">>")
 
   -- Reselect after (de)indent in visual mode
-  noremap("v","<s-tab>", "<gv")
-  noremap("v","<tab>", ">gv")
+  noremap("v", "<s-tab>", "<gv")
+  noremap("v", "<tab>", ">gv")
 
   -- Easier tab movements
   noremap("n", "<leader>tl", ":tabn<cr>")

@@ -50,6 +50,7 @@ local function install_packages()
 
     -- Status Line
     use { 'hoob3rt/lualine.nvim' }
+    use { 'nvim-lua/lsp-status.nvim' }
 
     -- Fuzzy Finder(s)
     use { 'nvim-telescope/telescope.nvim' }
@@ -60,24 +61,19 @@ local function install_packages()
     use { 'folke/todo-comments.nvim', branch = 'main' }
 
     -- Indent lines
-    use "lukas-reineke/indent-blankline.nvim"
+    use { 'lukas-reineke/indent-blankline.nvim' }
 
-    -- Completions
-    use { 'neoclide/coc.nvim', tag = 'release' }
-    use { 'neoclide/coc-tsserver', run = 'yarn install --frozen-lockfile' }
-    use { 'neoclide/coc-eslint', run = 'yarn install --frozen-lockfile' }
-    use { 'neoclide/coc-prettier', run = 'yarn install --frozen-lockfile' }
-    use { 'neoclide/coc-json', run = 'yarn install --frozen-lockfile' }
-    use { 'neoclide/coc-vetur', run = 'yarn install --frozen-lockfile' }
-    use { 'neoclide/coc-solargraph', run = 'yarn install --frozen-lockfile' }
-    use { 'fannheyward/coc-rust-analyzer', run = 'yarn install --frozen-lockfile' }
-    use { 'josa42/coc-lua', run = 'yarn install --frozen-lockfile' }
-    use { 'jlesquembre/coc-conjure', run = 'yarn install --frozen-lockfile' }
-    use { 'felippepuhle/coc-graphql', run = 'yarn install --frozen-lockfile' }
-    use { 'josa42/coc-go', run = 'yarn install --frozen-lockfile' }
-    use { 'iamcco/coc-tailwindcss',  run = 'yarn install --frozen-lockfile && yarn run build' }
-    use { 'marlonfan/coc-phpls', run = 'yarn install --frozen-lockfile' }
-    use { 'OmniSharp/omnisharp-vim' }
+    -- Native LSP
+    use { 'neovim/nvim-lspconfig' }
+    use { 'kabouzeid/nvim-lspinstall' }
+    use { 'glepnir/lspsaga.nvim' }
+    use { 'onsails/lspkind-nvim' }
+
+    -- Autocomplete
+    use { 'hrsh7th/nvim-compe' }
+
+    -- Snippets
+    use { 'hrsh7th/vim-vsnip' }
 
     -- Languages
     use { 'cespare/vim-toml' }
@@ -96,25 +92,25 @@ local function install_packages()
     use { '2072/PHP-Indenting-for-VIm' }
 
     -- Colors
-    use { '~/OneDrive/Tools/DraculaPro/themes', as = "dracula_pro", rtp = "vim" }
     use { 'glepnir/zephyr-nvim', branch = 'main' }
-    use { 'tiagovla/tokyodark.nvim' }
     use { 'folke/tokyonight.nvim', branch = 'main' }
+    use { 'rose-pine/neovim' }
   end)
 end
 
 local function load_plugin_configs()
-  require("atta.plugins.coc").setup()
   require("atta.plugins.fern").setup()
   require("atta.plugins.glyph_palette").setup()
   require("atta.plugins.indent-blankline").setup()
+  require("atta.plugins.lsp").setup()
   require("atta.plugins.lualine").setup()
   require("atta.plugins.nerdcommenter").setup()
   require("atta.plugins.nvim-treesitter").setup()
+  require("atta.plugins.rose-pine").setup()
   require("atta.plugins.sexp").setup()
   require("atta.plugins.telescope").setup()
   require("atta.plugins.todo_comments").setup()
-  require("atta.plugins.tokyonight").setup()
+  -- require("atta.plugins.tokyonight").setup()
   require("atta.plugins.trouble").setup()
 end
 

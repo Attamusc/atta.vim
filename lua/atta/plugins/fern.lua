@@ -34,13 +34,13 @@ augroup END
   ]])
 end
 
-local function fern_smart_leaf()
-  local open = t("<Plug>(fern-action-open:select)")
-  local expand = t("<Plug>(fern-action-expand)")
-  local collapse = t("<Plug>(fern-action-collapse)")
+-- local function fern_smart_leaf()
+  -- local open = t("<Plug>(fern-action-open:select)")
+  -- local expand = t("<Plug>(fern-action-expand)")
+  -- local collapse = t("<Plug>(fern-action-collapse)")
 
-  return fn.printf("fern#smart#leaf(%s, %s, %s)", open, expand, collapse)
-end
+  -- return fn.printf("fern#smart#leaf(%s, %s, %s)", open, expand, collapse)
+-- end
 
 function M.fern_init()
    -- Bailing out of lua for this since for some reason I can't get the nvim.wo.* version of these

@@ -1,4 +1,5 @@
 local lualine = require('lualine')
+local lspstatus = require('lsp-status')
 
 local M = {}
 
@@ -13,7 +14,8 @@ function M.setup()
   lualine.setup({
     options = {
       icons_enabled = true,
-      theme = "tokyonight",
+      -- theme = "tokyonight",
+      theme = "rose-pine",
       component_separators = {"", ""},
       section_separators = {"", ""},
       disabled_filetypes = {},
@@ -21,7 +23,7 @@ function M.setup()
     sections = {
       lualine_a = {"mode"},
       lualine_b = {"branch", "diff"},
-      lualine_c = {"filename"},
+      lualine_c = {"filename", lspstatus.status},
       lualine_x ={"encoding", "fileformat", "filetype"},
       lualine_y = {"progress"},
       lualine_z = {"location"},
