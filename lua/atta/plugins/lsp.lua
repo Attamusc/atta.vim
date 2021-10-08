@@ -1,8 +1,8 @@
 -- Bundling all these plguins into one config since they need to come
 -- in a specific order. I might split them apart if this files ends up
 -- too large.
-local lspconfig = require("lspconfig")
-local lspinstall = require("lspinstall")
+
+local lsp_installer = require("nvim-lsp-installer")
 local kind = require("lspkind")
 local saga = require("lspsaga")
 local compe = require("compe")
@@ -28,9 +28,13 @@ local function on_attach(client)
 end
 
 local server_configs = {
-	bash = {},
-	csharp = {},
-	lua = {
+	jsonls = {},
+	yamlls = {},
+	bashls = {},
+	intelephense = {},
+	solargraph = {},
+	omnisharp = {},
+	sumneko_lua = {
 		settings = {
 			Lua = {
 				runtime = {
@@ -49,15 +53,19 @@ local server_configs = {
 			},
 		},
 	},
-	php = {},
-	typescript = {},
-	rust = {
+	tsserver = {
 		on_attach = function(client)
 			client.resolved_capabilities.document_formatting = false
 			on_attach(client)
 		end,
 	},
-	go = {
+	rust_analyzer = {
+		on_attach = function(client)
+			client.resolved_capabilities.document_formatting = false
+			on_attach(client)
+		end,
+	},
+	gopls = {
 		on_attach = function(client)
 			client.resolved_capabilities.document_formatting = false
 			on_attach(client)
@@ -83,6 +91,17 @@ local server_configs = {
 	},
 	efm = {
 		on_attach = on_attach,
+		filetypes = {
+			"lua",
+			"go",
+			"rust",
+			"javascript",
+			"javascriptreact",
+			"javascript.jsx",
+			"typescript",
+			"typescriptreact",
+			"typescript.jsx",
+		},
 		init_options = { documentFormatting = true },
 		settings = {
 			rootMarkers = { ".git/" },
@@ -101,25 +120,24 @@ local server_configs = {
 				rust = {
 					{ formatCommand = "rustfmt --emit=stdout --edition=2018", formatStdin = true },
 				},
+				javascript = {},
+				javascriptreact = {},
+				["javascript.jsx"] = {},
+				typescript = {},
+				typescriptreact = {},
+				["typescript.jsx"] = {},
 			},
 		},
 	},
 }
 
 local function setup_servers()
-	lspinstall.setup()
+	lsp_installer.on_server_ready(function(server)
+		local config = server_configs[server.name] or {}
 
-	local servers = lspinstall.installed_servers()
-
-	for _, server in pairs(servers) do
-		local config = server_configs[server] or {}
-		lspconfig[server].setup(config)
-	end
-
-	lspinstall.post_install_hook = function()
-		setup_servers()
-		cmd([[bufdo e]])
-	end
+		server:setup(config)
+		cmd([[do User LspAttachBuffer]])
+	end)
 end
 
 local function setup_completions()
@@ -165,7 +183,37 @@ local function setup_saga()
 end
 
 local function setup_kind()
-	kind.init()
+	kind.init({
+		with_text = true,
+		preset = "default",
+		symbol_map = {
+			Text = "",
+			Method = "",
+			Function = "",
+			Constructor = "",
+			Field = "ﰠ",
+			Variable = "",
+			Class = "ﴯ",
+			Interface = "",
+			Module = "",
+			Property = "ﰠ",
+			Unit = "塞",
+			Value = "",
+			Enum = "",
+			Keyword = "",
+			Snippet = "",
+			Color = "",
+			File = "",
+			Reference = "",
+			Folder = "",
+			EnumMember = "",
+			Constant = "",
+			Struct = "פּ",
+			Event = "",
+			Operator = "",
+			TypeParameter = "",
+		},
+	})
 end
 
 local function check_back_space()
@@ -231,23 +279,24 @@ local function bind_keymaps()
 		{ silent = true }
 	)
 
-	-- line diagnostics
+	-- diagnostics
+	vim.cmd([[autocmd CursorHold * lua require('lspsaga.diagnostic').show_cursor_diagnostics()]])
+
 	utils.noremap(
 		"n",
 		"<leader>cd",
-		"<cmd>lua require'lspsaga.diagnostic'.show_line_diagnostics()<CR>",
+		"<cmd>lua require('lspsaga.diagnostic').show_line_diagnostics()<CR>",
 		{ silent = true }
 	)
-	utils.noremap("n", "[e", "<cmd>lua require'lspsaga.diagnostic'.lsp_jump_diagnostic_prev()<CR>", { silent = true })
-	utils.noremap("n", "]e", "<cmd>lua require'lspsaga.diagnostic'.lsp_jump_diagnostic_next()<CR>", { silent = true })
+
+	utils.noremap("n", "[e", "<cmd>lua require('lspsaga.diagnostic').lsp_jump_diagnostic_prev()<CR>", { silent = true })
+	utils.noremap("n", "]e", "<cmd>lua require('lspsaga.diagnostic').lsp_jump_diagnostic_next()<CR>", { silent = true })
 end
 
 local function setup_diagnostics()
 	lsp.handlers["textDocument/publishDiagnostics"] = lsp.with(lsp.diagnostic.on_publish_diagnostics, {
-		virtual_text = {
-			prefix = "»",
-			spacing = 4,
-		},
+		virtual_text = false,
+		underline = true,
 		signs = true,
 		update_in_insert = false,
 	})
