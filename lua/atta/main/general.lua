@@ -124,7 +124,7 @@ local function general_settings()
 	-- Don't show the current mode, since the status line plugin will do this
 	opt.showmode = false
 
-	opt.completeopt = "menuone,noselect"
+	opt.completeopt = "menu,menuone,noselect"
 
 	-- Dark background for colorschemes that provide both
 	opt.background = "dark"

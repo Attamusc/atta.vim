@@ -39,8 +39,11 @@ local function install_packages()
 		-- Lua nvim utils
 		use({ "nvim-lua/popup.nvim" })
 		use({ "nvim-lua/plenary.nvim" })
+
 		-- VCS
 		use({ "tpope/vim-fugitive" })
+		use({ "pwntester/octo.nvim" })
+
 		-- File Drawer
 		use({ "lambdalisue/fern.vim" })
 		use({ "lambdalisue/fern-renderer-nerdfont.vim" })
@@ -72,7 +75,17 @@ local function install_packages()
 		use({ "onsails/lspkind-nvim" })
 
 		-- Autocomplete
-		use({ "hrsh7th/nvim-compe" })
+		-- use({ "hrsh7th/nvim-compe" })
+
+		use({ "hrsh7th/nvim-cmp" })
+		use({ "hrsh7th/cmp-cmdline" })
+		use({ "hrsh7th/cmp-buffer" })
+		use({ "hrsh7th/cmp-path" })
+		use({ "hrsh7th/cmp-vsnip" })
+		use({ "hrsh7th/cmp-nvim-lua" })
+		use({ "hrsh7th/cmp-nvim-lsp" })
+		use({ "hrsh7th/cmp-nvim-lsp-document-symbol" })
+    use({ "lukas-reineke/cmp-under-comparator" })
 
 		-- Snippets
 		use({ "hrsh7th/vim-vsnip" })

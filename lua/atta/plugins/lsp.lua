@@ -5,7 +5,8 @@
 local lsp_installer = require("nvim-lsp-installer")
 local kind = require("lspkind")
 local saga = require("lspsaga")
-local compe = require("compe")
+local cmp = require("cmp")
+local cmp_under = require("cmp-under-comparator")
 local utils = require("atta.utils")
 
 local cmd = vim.cmd
@@ -141,39 +142,85 @@ local function setup_servers()
 end
 
 local function setup_completions()
-	compe.setup({
-		enabled = true,
-		autocomplete = true,
-		debug = false,
-		min_length = 1,
-		preselect = "enable",
-		throttle_time = 80,
-		source_timeout = 200,
-		resolve_timeout = 800,
-		incomplete_delay = 400,
-		max_abbr_width = 100,
-		max_kind_width = 100,
-		max_menu_width = 100,
-		documentation = {
-			border = { "", "", "", " ", "", "", "", " " },
-			winhighlight = "NormalFloat:CompeDocumentation,FloatBorder:CompeDocumentationBorder",
-			max_width = 120,
-			min_width = 60,
-			max_height = math.floor(vim.o.lines * 0.3),
-			min_height = 1,
+	cmp.setup({
+		mapping = {
+			["<c-d>"] = cmp.mapping.scroll_docs(-4),
+			["<c-f>"] = cmp.mapping.scroll_docs(4),
+			["<c-e>"] = cmp.mapping.close(),
+			["<CR>"] = cmp.mapping(
+				cmp.mapping.confirm({
+					behavior = cmp.ConfirmBehavior.Insert,
+					select = true,
+				}),
+				{ "i", "c" }
+			),
+			["<c-space>"] = cmp.mapping({
+				i = cmp.mapping.complete(),
+				c = function(
+					_ --[[fallback]]
+				)
+					if cmp.visible() then
+						if not cmp.confirm({ select = true }) then
+							return
+						end
+					else
+						cmp.complete()
+					end
+				end,
+			}),
+			-- ["<tab>"] = cmp.mapping({
+			-- i = cmp.config.disable,
+			-- c = function(fallback)
+			-- fallback()
+			-- end,
+			-- }),
 		},
 
-		source = {
-			path = true,
-			buffer = true,
-			calc = true,
-			vsnip = true,
-			nvim_lsp = true,
-			nvim_lua = true,
-			spell = true,
-			tags = true,
-			snippets_nvim = true,
-			treesitter = true,
+		snippet = {
+			expand = function(args)
+				fn["vsnip#anonymous"](args.body)
+			end,
+		},
+
+		sources = {
+			{ name = "nvim_lua" },
+			{ name = "nvim_lsp" },
+			{ name = "path" },
+			{ name = "vsnip" },
+			{ name = "buffer", keyword_length = 4 },
+		},
+
+		formatting = {
+			format = kind.cmp_format({
+				with_text = true,
+				menu = {
+					buffer = "[buffer]",
+					nvim_lsp = "[LSP]",
+					nvim_lua = "[api]",
+					path = "[path]",
+					vsnip = "[snippet]",
+					gh_issues = "[issues]",
+					tn = "[TabNine]",
+				},
+			}),
+		},
+
+		sorting = {
+			comparators = {
+				cmp.config.compare.offset,
+				cmp.config.compare.exact,
+				cmp.config.compare.score,
+				cmp_under.under,
+				cmp.config.compare.kind,
+				cmp.config.compare.sort_text,
+				cmp.config.compare.length,
+				cmp.config.compare.order,
+			},
+		},
+
+		experimental = {
+			native_menu = false,
+			ghost_text = true,
 		},
 	})
 end
@@ -216,53 +263,7 @@ local function setup_kind()
 	})
 end
 
-local function check_back_space()
-	local col = fn.col(".") - 1
-	if col == 0 or fn.getline("."):sub(col, col):match("%s") then
-		return true
-	else
-		return false
-	end
-end
-
-function _G.tab_complete()
-	if fn.pumvisible() == 1 then
-		return utils.t("<C-n>")
-	elseif fn.call("vsnip#available", { 1 }) == 1 then
-		return utils.t("<Plug>(vsnip-expand-or-jump)")
-	elseif check_back_space() then
-		return utils.t("<Tab>")
-	else
-		return fn["compe#complete"]()
-	end
-end
-
-function _G.s_tab_complete()
-	if fn.pumvisible() == 1 then
-		return utils.t("<C-p>")
-	elseif fn.call("vsnip#jumpable", { -1 }) == 1 then
-		return utils.t("<Plug>(vsnip-jump-prev)")
-	else
-		return utils.t("<S-Tab>")
-	end
-end
-
 local function bind_keymaps()
-	-- These all have some issue when defined in lua, so bounce out
-	-- to vim to define them
-	cmd([[imap <expr> <Tab> v:lua.tab_complete()]])
-	cmd([[imap <expr> <S-Tab> v:lua.s_tab_complete()]])
-
-	cmd([[smap <expr> <Tab> v:lua.tab_complete()]])
-	cmd([[smap <expr> <S-Tab> v:lua.s_tab_complete()]])
-
-	cmd([[inoremap <silent><expr> <C-Space> compe#complete()]])
-	cmd([[inoremap <silent><expr> <CR> compe#confirm('<CR>')]])
-	cmd([[inoremap <silent><expr> <C-e> compe#close('<C-e>')]])
-	cmd([[inoremap <silent><expr> <C-f> compe#scroll({ 'delta': +4 })]])
-	cmd([[inoremap <silent><expr> <C-d> compe#scroll({ 'delta': -4 })]])
-
-	-- Use K to show documentation in preview window.
 	utils.noremap("n", "K", "<cmd>lua require('lspsaga.hover').render_hover_doc()<CR>", { silent = true })
 
 	-- scroll down hover doc
@@ -289,8 +290,12 @@ local function bind_keymaps()
 		{ silent = true }
 	)
 
-	utils.noremap("n", "[e", "<cmd>lua require('lspsaga.diagnostic').lsp_jump_diagnostic_prev()<CR>", { silent = true })
-	utils.noremap("n", "]e", "<cmd>lua require('lspsaga.diagnostic').lsp_jump_diagnostic_next()<CR>", { silent = true })
+	utils.noremap("n", "[e", "<cmd>lua require('lspsaga.diagnostic').lsp_jump_diagnostic_prev()<CR>", {
+		silent = true,
+	})
+	utils.noremap("n", "]e", "<cmd>lua require('lspsaga.diagnostic').lsp_jump_diagnostic_next()<CR>", {
+		silent = true,
+	})
 end
 
 local function setup_diagnostics()
