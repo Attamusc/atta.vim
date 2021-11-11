@@ -69,14 +69,11 @@ local function install_packages()
 
 		-- Native LSP
 		use({ "neovim/nvim-lspconfig" })
-		-- use({ "kabouzeid/nvim-lspinstall" })
 		use({ "williamboman/nvim-lsp-installer" })
-		use({ "rinx/lspsaga.nvim" })
+		use({ "tami5/lspsaga.nvim" })
 		use({ "onsails/lspkind-nvim" })
 
 		-- Autocomplete
-		-- use({ "hrsh7th/nvim-compe" })
-
 		use({ "hrsh7th/nvim-cmp" })
 		use({ "hrsh7th/cmp-cmdline" })
 		use({ "hrsh7th/cmp-buffer" })
@@ -85,7 +82,7 @@ local function install_packages()
 		use({ "hrsh7th/cmp-nvim-lua" })
 		use({ "hrsh7th/cmp-nvim-lsp" })
 		use({ "hrsh7th/cmp-nvim-lsp-document-symbol" })
-    use({ "lukas-reineke/cmp-under-comparator" })
+		use({ "lukas-reineke/cmp-under-comparator" })
 
 		-- Snippets
 		use({ "hrsh7th/vim-vsnip" })

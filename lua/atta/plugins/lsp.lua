@@ -168,12 +168,6 @@ local function setup_completions()
 					end
 				end,
 			}),
-			-- ["<tab>"] = cmp.mapping({
-			-- i = cmp.config.disable,
-			-- c = function(fallback)
-			-- fallback()
-			-- end,
-			-- }),
 		},
 
 		snippet = {
