@@ -65,7 +65,7 @@ local function install_packages()
 		use({ "folke/todo-comments.nvim", branch = "main" })
 
 		-- Indent lines
-		use({ "lukas-reineke/indent-blankline.nvim" })
+		-- use({ "lukas-reineke/indent-blankline.nvim" })
 
 		-- Native LSP
 		use({ "neovim/nvim-lspconfig" })
@@ -119,7 +119,7 @@ end
 local function load_plugin_configs()
 	require("atta.plugins.fern").setup()
 	require("atta.plugins.glyph_palette").setup()
-	require("atta.plugins.indent-blankline").setup()
+	-- require("atta.plugins.indent-blankline").setup()
 	require("atta.plugins.lsp").setup()
 	require("atta.plugins.lualine").setup()
 	require("atta.plugins.nerdcommenter").setup()
