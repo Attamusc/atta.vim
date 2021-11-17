@@ -28,6 +28,10 @@ local function on_attach(client)
 	end
 end
 
+local jsconfigs = {
+	{ formatCommand = "./node_modules/.bin/prettier --stdin-filepath ${INPUT}", formatStdin = true },
+}
+
 local server_configs = {
 	jsonls = {},
 	yamlls = {},
@@ -121,12 +125,12 @@ local server_configs = {
 				rust = {
 					{ formatCommand = "rustfmt --emit=stdout --edition=2018", formatStdin = true },
 				},
-				javascript = {},
-				javascriptreact = {},
-				["javascript.jsx"] = {},
-				typescript = {},
-				typescriptreact = {},
-				["typescript.jsx"] = {},
+				javascript = jsconfigs,
+				javascriptreact = jsconfigs,
+				["javascript.jsx"] = jsconfigs,
+				typescript = jsconfigs,
+				typescriptreact = jsconfigs,
+				["typescript.jsx"] = jsconfigs,
 			},
 		},
 	},
